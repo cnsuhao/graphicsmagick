@@ -1,0 +1,56 @@
+2017-01-26  Glenn Randers-Pehrson  <glennrp@simple.dallas.tx.us>
+
+	* coders/png.c: Added support for a proposed new PNG chunk
+	(zxIf, read-only) that is currently being discussed on the
+	png-mng-misc at lists.sourceforge.net mailing list.  Enable
+	exIf and zxIf with CPPFLAGS="-DexIf_SUPPORTED -DxzIf_SUPPORTED".
+	If exIf is enabled, only the uncompressed exIF chunk will be
+	written and the hex-encoded zTXt chunk containing the raw Exif
+	profile won't be written.
+
+2017-01-25  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* coders/msl.c (MSLStartElement): Change test for NULL image
+	pointer to before it is used rather than after it is used.
+	Problem reported by Petr Gajdos on 2017-01-25.
+
+2017-01-22  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* TclMagick/unix/m4/tcl.m4: Update tcl.m4 to TEA 3.10.  File
+	supplied by Massimo Manghi.
+
+2017-01-21  Glenn Randers-Pehrson  <glennrp@simple.dallas.tx.us>
+
+	* coders/png.c: Added support for a proposed new PNG
+	chunk (exIf read-write, eXIf read-only) that is currently
+	being discussed on the png-mng-misc at lists.sourceforge.net
+	mailing list.
+
+2017-01-21  Glenn Randers-Pehrson  <glennrp@simple.dallas.tx.us>
+
+	* coders/png.c: Added read_user_chunk_callback() function
+	and used it to implement a private PNG caNv (canvas) chunk
+	for remembering the original dimensions and offsets when an
+	image is cropped.  Previously we used the oFFs chunk for this
+	purpose, but this had potential conflicts with other applications
+	that also use the oFFs chunk.
+
+2017-01-07  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* TclMagick/Makefile.am (AM_DISTCHECK_CONFIGURE_FLAGS): Applied
+	patch by Massimo Manghi to set AM_DISTCHECK_CONFIGURE_FLAGS so
+	that 'make distcheck' remembers configuration options, and also to
+	uninstall pkgIndex.tcl.
+
+	* magick/image.c (SetImageEx): Use PixelIterateMonoSet() for
+	possibly improved efficiency.
+
+	* magick/pixel_iterator.c (PixelIterateMonoSet): New pixel
+	iterator intended for use when initializing image pixels, without
+	regard to existing values.
+
+2017-01-01  Bob Friesenhahn  <bfriesen@simple.dallas.tx.us>
+
+	* Copyright.txt: Bump copyright years and rotate ChangeLog.
+
+
